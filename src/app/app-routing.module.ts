@@ -1,10 +1,17 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [];
+const appRoutes: Routes = [
+    { path: 'site', loadChildren: './site/site.module#SiteModule' },
+    { path: '', redirectTo: 'site', pathMatch: 'full' }
+];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [
+        RouterModule.forRoot(appRoutes,{ useHash: true })
+    ],
+    exports: [
+        RouterModule
+    ]
 })
 export class AppRoutingModule { }

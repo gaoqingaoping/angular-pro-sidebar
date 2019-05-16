@@ -1,0 +1,16 @@
+.parent{
+    height: 100vh;
+    display: flex;
+    flex-flow: row;
+}
+
+.side-bar {
+    width: 305px;
+    height: 100vh;
+    border-right: solid 1px gray;
+}
+
+.content {
+    flex: 1;
+    padding: 15px;
+}

@@ -1,0 +1,162 @@
+<form [formGroup]="profileForm">
+  <div class="row">
+    <div class="col-md-5">
+      <!-- col-md-4 : 表示水平12等分它占4份，-->
+      <label>
+        First Name:
+      </label>
+      <!-- <input type="text" [formControl]="firstName" class="form-control"> -->
+
+      <input type="text" formControlName="firstName" class="form-control" required="true">
+      <!-- formControlName 实现上双向绑定吗？ -->
+    </div>
+    <div class="col-md-5">
+      <label>
+        Last Name:
+      </label>
+      <input type="text" formControlName="lastName" class="form-control" (change)=myOnChange() disabled>
+    </div>
+    <div class="row clearfix">
+      value: {{profileForm.value.firstName}}
+      value2: {{ profileForm.get('lastName').value }}
+    </div>
+  </div>
+
+
+  <div formGroupName="address">
+    <div class="row">
+      <div class="col-md-5">
+        <label>Streel</label>
+        <input type="text" formControlName="street" class="form-control">
+      </div>
+      <div class="col-md-5">
+        <label>City</label>
+        <input type="text" formControlName="city" class="form-control">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-5">
+        <label>State</label>
+        <input type="text" formControlName="state" class="form-control">
+      </div>
+      <div class="col-md-5">
+        <label>Zip Code</label>
+        <input type="text" formControlName="zip" class="form-control">
+      </div>
+    </div>
+
+    <div class="row clearfix" style="margin: 12px;">
+      <button type="button" [disabled]="!profileForm.valid" (click)="onSubmit()"
+      class="btn btn-outline-primary"
+      >Submit</button> &nbsp; &nbsp;
+      <button (click)="updateProfile()"
+      class="btn btn-outline-primary"
+      >Update Profile</button>
+    </div>
+    <div class="row" style="margin: 12px;">
+      <!-- the below is only for show the button style -->
+      <button type="button" class="btn btn-outline-primary">Primary</button>
+      <button type="button" class="btn btn-outline-secondary">Secondary</button>
+      <button type="button" class="btn btn-outline-success">Success</button>
+      <button type="button" class="btn btn-outline-danger">Danger</button>
+      <button type="button" class="btn btn-outline-warning">Warning</button>
+      <button type="button" class="btn btn-outline-info">Info</button>
+      <button type="button" class="btn btn-outline-light">Light</button>
+      <button type="button" class="btn btn-outline-dark">Dark</button>
+      <button type="button" class="btn btn-primary btn-sm">Small button</button>
+      <button type="button" class="btn btn-secondary btn-sm">Small button</button>
+    </div>
+    <div class="row clearfix" style="margin: 12px;">
+        <button type="button" class="btn btn-primary">Primary</button>
+        <button type="button" class="btn btn-secondary">Secondary</button>
+        <button type="button" class="btn btn-success">Success</button>
+        <button type="button" class="btn btn-danger">Danger</button>
+        <button type="button" class="btn btn-warning">Warning</button>
+        <button type="button" class="btn btn-info">Info</button>
+        <button type="button" class="btn btn-light">Light</button>
+        <button type="button" class="btn btn-dark">Dark</button>
+        <button type="button" class="btn btn-link">Link</button>
+    </div>
+    <div class="row">
+      <p>
+        Form Status: {{ profileForm.status }}
+      </p>
+    </div>
+
+
+  </div>
+
+</form>
+
+
+<!--
+<form>
+  <div class="form-row">
+    <div class="col-md-4 mb-3">
+      <label for="validationServer01">First name</label>
+      <input type="text" class="form-control is-valid" id="validationServer01" placeholder="First name" value="Mark"
+        required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationServer02">Last name</label>
+      <input type="text" class="form-control is-valid" id="validationServer02" placeholder="Last name" value="Otto"
+        required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationServerUsername">Username</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroupPrepend3">@</span>
+        </div>
+        <input type="text" class="form-control is-invalid" id="validationServerUsername" placeholder="Username"
+          aria-describedby="inputGroupPrepend3" required>
+        <div class="invalid-feedback">
+          Please choose a username.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <label for="validationServer03">City</label>
+      <input type="text" class="form-control is-invalid" id="validationServer03" placeholder="City" required>
+      <div class="invalid-feedback">
+        Please provide a valid city.
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="validationServer04">State</label>
+      <input type="text" class="form-control is-invalid" id="validationServer04" placeholder="State" required>
+      <div class="invalid-feedback">
+        Please provide a valid state.
+      </div>
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="validationServer05">Zip</label>
+      <input type="text" class="form-control is-invalid" id="validationServer05" placeholder="Zip" required>
+      <div class="invalid-feedback">
+        Please provide a valid zip.
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input is-invalid" type="checkbox" value="" id="invalidCheck3" required>
+      <label class="form-check-label" for="invalidCheck3">
+        Agree to terms and conditions
+      </label>
+      <div class="invalid-feedback">
+        You must agree before submitting.
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary" type="submit">Submit form</button>
+</form>
+-->

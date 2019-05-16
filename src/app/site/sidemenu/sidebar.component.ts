@@ -5,8 +5,7 @@ import { SidebarService } from './sidebar.service';
 
 @Component({
   selector: 'app-sidebar',
-  templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.scss'],
+  template: '<app-navi-menu></app-navi-menu>',
   animations: [
     trigger('slide', [
       state('up', style({ height: 0 })),
@@ -17,11 +16,10 @@ import { SidebarService } from './sidebar.service';
 })
 export class SidebarComponent implements OnInit {
   menus = [];
-  constructor(public sidebarservice: SidebarService) {
-    this.menus = sidebarservice.getMenuList();
-   }
+  constructor(public sidebarservice: SidebarService) {}
 
   ngOnInit() {
+    this.menus = this.sidebarservice.getMenuList();
   }
 
   getSideBarState() {
