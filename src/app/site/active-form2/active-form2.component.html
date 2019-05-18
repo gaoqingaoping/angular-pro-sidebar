@@ -1,27 +1,62 @@
 <form [formGroup]="profileForm">
   <div class="row">
-    <div class="col-md-5">
+    <div class="col-md-6">
       <!-- col-md-4 : 表示水平12等分它占4份，-->
       <label>
         First Name:
       </label>
       <!-- <input type="text" [formControl]="firstName" class="form-control"> -->
 
-      <input type="text" formControlName="firstName" class="form-control" required="true">
+      <input type="text" formControlName="firstName" class="form-control">
       <!-- formControlName 实现上双向绑定吗？ -->
     </div>
-    <div class="col-md-5">
+    <div class="col-md-6">
       <label>
         Last Name:
       </label>
-      <input type="text" formControlName="lastName" class="form-control" (change)=myOnChange() disabled>
-    </div>
-    <div class="row clearfix">
-      value: {{profileForm.value.firstName}}
-      value2: {{ profileForm.get('lastName').value }}
+      <input type="text" formControlName="lastName" class="form-control" required>
     </div>
   </div>
 
+  <div class="row">
+      <div class="col-md-4">
+          <label>
+            Gender - 1:
+          </label>
+          <select formControlName="gender" class="form-control">
+              <option *ngFor="let item of gender; index as i;" [ngValue]="i"> <!-- 这里如果是value='i' 就收集不到数据, 必须是 [ngValue] -->
+                  {{item}}
+              </option>
+          </select>
+      </div>
+      <div class="col-md-4">
+          <label>
+            Gender - 2:
+          </label>
+          <select formControlName="gender2" class="form-control">
+              <!-- <option *ngFor="let itemKey of Object.keys(gender2); index as i;" [ngValue]="itemKey">
+                  {{gender2.itemKey}}
+                  // 好像 ngFor不支持遍历对象，只支持遍历数组！！！！
+              </option> -->
+          </select>
+      </div>
+      <div class="col-md-4">
+          <label>
+            Gender - 3:
+          </label>
+          <select formControlName="gender3" class="form-control">
+              <option value='' disabled>-- Please select --</option>
+              <option *ngFor="let item of gender3;" [ngValue]="item.itemValue">
+                  {{item.itemLable}}
+              </option>
+          </select>
+      </div>
+  </div>
+
+  <div class="row clearfix">
+      value: {{profileForm.value.firstName}}
+      value2: {{ profileForm.get('lastName').value }}
+    </div>
 
   <div formGroupName="address">
     <div class="row">

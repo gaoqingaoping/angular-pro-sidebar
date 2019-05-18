@@ -24,31 +24,63 @@ export class ActiveForm2Component implements OnInit {
     //         zip: new FormControl('')
     //     })
     // });
-    constructor(private fb: FormBuilder) { }
 
-    profileForm = this.fb.group({
-        firstName: ['gao', Validators.required],
-        lastName: ['qin'],
-        address: this.fb.group({
-            street: [''],
-            city: [''],
-            state: [''],
-            zip: ['']
-        }),
-    });
+    profileForm: FormGroup;
+
+    gender = ['男', '女'];
+
+    gender2 = {
+        0: '男',
+        1: '女'
+    };
+
+    gender3 = [
+        {
+            'itemLable': '男',
+            'itemValue': 0
+        },
+        {
+            'itemLable': '女',
+            'itemValue': 1
+        }
+    ];
+
+    constructor(private fb: FormBuilder) {
+        this.profileForm = this.fb.group({
+            firstName: '',
+            lastName: ['qin', [Validators.required]],
+            gender: [0],
+            gender2: [0],
+            gender3: [''],
+            address: this.fb.group({ // 子group中的控件可以和父group中重名，group有类似“命名空间”的感觉
+                street: [''],
+                city: [''],
+                state: [''],
+                zip: ['']
+            }),
+            subForm: this.fb.group({ // 这里用subForm来测试将一个复杂的form表单拆分成多个组件来做，这样减少每个组件的复杂度，也更加便于维护
+                street: [''],
+                city: [''],
+                state: [''],
+                zip: ['']
+            }),
+        });
+        this.profileForm.controls.gender3.valueChanges.subscribe((value) => {
+            this.profileForm.controls.gender.setValue(value);
+            this.profileForm.controls.firstName.enable();
+            console.log(this.profileForm);
+        });
+    }
 
 
     ngOnInit() {
-        console.log(this.profileForm);
-        return;
-        this.nameDO = {
-            firstName: 'gao',
-            lastName: 'qin'
-        };
+        this.profileForm.controls.firstName.setValue('gao-new-name');
+        this.profileForm.controls.firstName.disable();
+        this.profileForm.controls.firstName.validator = Validators.required;
     }
 
     onSubmit() {
-        console.log(this.profileForm.value);
+        console.log(this.profileForm);
     }
 
     //用于部分模型的修改
@@ -61,9 +93,12 @@ export class ActiveForm2Component implements OnInit {
         });
     }
 
-    myOnChange(){
+    myOnChange() {
         console.log('fe');
     }
+
+
+
 
     // 动态新增表单控件
     // addAction() {
