@@ -1,0 +1,29 @@
+<div [formGroup]="subForm" style="border: solid 1px red; margin: 20px 0; padding: 10px 0;">
+    <div class="row clearfix">
+        <div class="col-md-12" style="margin-top: 20px;">
+            <h4>Belowing is the sub-form part:</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <label>value-1</label>
+            <input type="text" formControlName="value1" class="form-control">
+        </div>
+        <div class="col-md-3">
+            <label>value-2</label>
+            <input type="text" formControlName="value2" class="form-control">
+        </div>
+        <div class="col-md-3">
+            <label>value-3</label>
+            <input type="text" formControlName="value3" class="form-control">
+        </div>
+        <div class="col-md-3">
+            <label>value-4</label>
+            <input type="text" formControlName="value4" class="form-control">
+        </div>
+    </div>
+</div>
+
+<button type="button" (click)="onSubmit()"
+class="btn btn-outline-primary"
+>Submit</button> &nbsp; &nbsp;

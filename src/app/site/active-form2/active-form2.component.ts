@@ -57,17 +57,13 @@ export class ActiveForm2Component implements OnInit {
                 city: [''],
                 state: [''],
                 zip: ['']
-            }),
-            subForm: this.fb.group({ // 这里用subForm来测试将一个复杂的form表单拆分成多个组件来做，这样减少每个组件的复杂度，也更加便于维护
-                street: [''],
-                city: [''],
-                state: [''],
-                zip: ['']
-            }),
+            })
+            // subForms: FormGroup //具体内容在子组件中再使用 parentFormGroup.addControl 动态添加
         });
         this.profileForm.controls.gender3.valueChanges.subscribe((value) => {
             this.profileForm.controls.gender.setValue(value);
             this.profileForm.controls.firstName.enable();
+            this.profileForm.controls.firstName.setValidators(Validators.required); //动态调整验证规则
             console.log(this.profileForm);
         });
     }
@@ -75,8 +71,8 @@ export class ActiveForm2Component implements OnInit {
 
     ngOnInit() {
         this.profileForm.controls.firstName.setValue('gao-new-name');
-        this.profileForm.controls.firstName.disable();
-        this.profileForm.controls.firstName.validator = Validators.required;
+        // this.profileForm.controls.firstName.disable();
+        this.profileForm.controls.firstName.setValidators(Validators.required);
     }
 
     onSubmit() {

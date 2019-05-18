@@ -9,6 +9,7 @@ import { NaviMenuComponent } from './sidemenu/naviMenu/naviMenu.component';
 import { NaviItemComponent } from './sidemenu/naviMenu/naviItem/naviItem.component';
 import { ActiveFormComponent } from './active-form/active-form.component';
 import { ActiveForm2Component } from './active-form2/active-form2.component';
+import { ActiveForm2SubFormComponent } from './active-form2/sub-form/sub-form.component';
 
 const SITE_COMPONENTS = [
     SiteComponent,
@@ -16,7 +17,8 @@ const SITE_COMPONENTS = [
     NaviMenuComponent,
     NaviItemComponent,
     ActiveFormComponent,
-    ActiveForm2Component
+    ActiveForm2Component,
+    ActiveForm2SubFormComponent
 ];
 
 @NgModule({
