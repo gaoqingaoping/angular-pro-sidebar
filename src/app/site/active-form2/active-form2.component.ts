@@ -2,7 +2,7 @@ import {
     Component
     , OnInit
 } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, FormArray } from '@angular/forms';
 import { Validators, FormBuilder } from '@angular/forms';
 
 @Component({
@@ -45,10 +45,11 @@ export class ActiveForm2Component implements OnInit {
         }
     ];
 
+
     constructor(private fb: FormBuilder) {
         this.profileForm = this.fb.group({
             firstName: '',
-            lastName: ['qin', [Validators.required]],
+            lastName: ['qin', [Validators.required, Validators.maxLength]],
             gender: [0],
             gender2: [0],
             gender3: [''],
@@ -68,11 +69,13 @@ export class ActiveForm2Component implements OnInit {
         });
     }
 
-
     ngOnInit() {
         this.profileForm.controls.firstName.setValue('gao-new-name');
         // this.profileForm.controls.firstName.disable();
         this.profileForm.controls.firstName.setValidators(Validators.required);
+        console.log('address');
+        // console.log(this.profileForm.controls.address);
+        (<FormGroup>this.profileForm.controls.address).controls.state.setValue('state-updated'); // 这里要使用类型断言，不然会编译报错
     }
 
     onSubmit() {
