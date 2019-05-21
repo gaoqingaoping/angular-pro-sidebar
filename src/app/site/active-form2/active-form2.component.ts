@@ -48,7 +48,7 @@ export class ActiveForm2Component implements OnInit {
 
     constructor(private fb: FormBuilder) {
         this.profileForm = this.fb.group({
-            firstName: '',
+            firstName: ['', [Validators.required, Validators.maxLength(6)]],
             lastName: ['qin', [Validators.required, Validators.maxLength]],
             gender: [0],
             gender2: [0],
@@ -65,8 +65,8 @@ export class ActiveForm2Component implements OnInit {
             this.profileForm.controls.gender.setValue(value);
             this.profileForm.controls.firstName.enable();
             this.profileForm.controls.firstName.setValidators(Validators.required); //动态调整验证规则
-            console.log(this.profileForm);
         });
+        console.dir(this.profileForm.controls.firstName);
     }
 
     ngOnInit() {
@@ -96,6 +96,25 @@ export class ActiveForm2Component implements OnInit {
         console.log('fe');
     }
 
+    removeFirstNameRequied(){
+        console.log(this.profileForm.get('firstName'));
+        // this.profileForm.get('firstName').clearValidators();
+    }
+
+    addFirstNameRequied(){
+        console.log(this.profileForm.get('firstName'));
+        // this.profileForm.get('firstName').clearValidators();
+    }
+
+    removeFirstNameDisabled(){
+        console.log(this.profileForm.get('firstName'));
+        // this.profileForm.get('firstName').clearValidators();
+    }
+
+    addFirstNameDisabled(){
+        console.log(this.profileForm.get('firstName'));
+        // this.profileForm.get('firstName').clearValidators();
+    }
 
 
 

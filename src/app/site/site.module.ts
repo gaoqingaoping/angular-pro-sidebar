@@ -10,6 +10,9 @@ import { NaviItemComponent } from './sidemenu/naviMenu/naviItem/naviItem.compone
 import { ActiveFormComponent } from './active-form/active-form.component';
 import { ActiveForm2Component } from './active-form2/active-form2.component';
 import { ActiveForm2SubFormComponent } from './active-form2/sub-form/sub-form.component';
+import { BaseComponent } from './dynamic-form/base.component';
+import { DynamicFormComponent } from './dynamic-form/dynamic-form.component';
+import { DynamicFormQuestionComponent } from './dynamic-form/dynamic-form-question.component';
 
 const SITE_COMPONENTS = [
     SiteComponent,
@@ -18,7 +21,10 @@ const SITE_COMPONENTS = [
     NaviItemComponent,
     ActiveFormComponent,
     ActiveForm2Component,
-    ActiveForm2SubFormComponent
+    ActiveForm2SubFormComponent,
+    BaseComponent,
+    DynamicFormComponent,
+    DynamicFormQuestionComponent
 ];
 
 @NgModule({

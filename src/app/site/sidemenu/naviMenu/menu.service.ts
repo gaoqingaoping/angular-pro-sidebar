@@ -10,7 +10,8 @@ export class MenusService {
                 expand: false,
                 subMenu: [
                     { name: 'active-form-1', type: 'link', url: 'active-form' },
-                    { name: 'active-form-2', type: 'link', url: 'active-form2' }
+                    { name: 'active-form-2', type: 'link', url: 'active-form2' },
+                    { name: 'dynamic form', type: 'link', url: 'dynamic-form' }
                 ]
             }
         ];

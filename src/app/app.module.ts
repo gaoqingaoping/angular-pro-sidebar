@@ -4,8 +4,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
-
+// import { DynamicFormModule } from './site/dynamic-form/dynamic-form.module';
 import { AppRoutingModule } from './app-routing.module';
+
 
 import { AppComponent } from './app.component';
 
@@ -22,6 +23,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   declarations: [ AppComponent ],
   imports: [
     CommonModule,
+    // DynamicFormModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,

@@ -5,10 +5,14 @@
       <label>
         First Name:
       </label>
-      <!-- <input type="text" [formControl]="firstName" class="form-control"> -->
+      <button type="button" class="btn btn-outline-primary" (click)="removeFirstNameRequied()">Remove required</button>
+      <button type="button" class="btn btn-outline-primary" (click)="addFirstNameRequied()">add required</button>
+      <button type="button" class="btn btn-outline-primary" (click)="removeFirstNameDisabled()">Remove disabled</button>
+      <button type="button" class="btn btn-outline-primary" (click)="addFirstNameDisabled()">add disabled</button>
 
-      <input type="text" formControlName="firstName" class="form-control">
-      <!-- formControlName 实现上双向绑定吗？ -->
+
+      <input type="text" [formControlName]="firstName" class="form-control">
+
     </div>
     <div class="col-md-6">
       <label>
@@ -16,6 +20,22 @@
       </label>
       <input type="text" formControlName="lastName" class="form-control">
     </div>
+  </div>
+
+  <div class="row">
+      <div class="col-md-6">
+        <div>First name status: {{profileForm.get('firstName').status}}</div>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-md-12">
+          <div class="invalid" *ngIf="profileForm.get('firstName').hasError('required')">Has Error: Validator.required</div>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-md-12">
+          <div class="invalid" *ngIf="profileForm.get('firstName').hasError('maxLength')">Has Error: Validator.maxLength</div>
+      </div>
   </div>
 
   <div class="row">

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { SiteComponent } from './site.component';
 import { ActiveFormComponent } from './active-form/active-form.component';
 import { ActiveForm2Component } from './active-form2/active-form2.component';
+import { BaseComponent } from './dynamic-form/base.component';
 
 const routes: Routes = [{
     path: '',
@@ -13,8 +14,13 @@ const routes: Routes = [{
     }, {
         path: 'active-form2',
         component: ActiveForm2Component,
-    }],
-},
+    },
+    {
+        path: 'dynamic-form',
+        component: BaseComponent
+    },
+    // { path: 'dynamic-form', loadChildren: './dynamic-form/dynamic-form.module#DynamicFormModule' }
+]},
 { path: '', redirectTo: 'tutorial', pathMatch: 'full' }
 ];
 
